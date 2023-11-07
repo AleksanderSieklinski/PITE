@@ -1,0 +1,3 @@
+Bank ING, Number of clients: 1
+Clients:
+1. John Smith, Balance: 100

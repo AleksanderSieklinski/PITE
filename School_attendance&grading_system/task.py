@@ -1,5 +1,3 @@
-import logging
-
 # The task was to write a python programme that simulates a school's attendance and grading system.
 # The school has subjects, which have students.
 # The school should be able to add subjects and students.
@@ -33,28 +31,27 @@ class Student:
         if class_name in self.classes_score:
             self.classes_score[class_name].append(score)
         else:
-            logging.warning("Student {} {} not in class {}.".format(self.name,self.surname))
+            raise ValueError("Student {} {} not in class {}.".format(self.name,self.surname))
 
     def get_score(self, class_name):
         if class_name in self.classes_score:
             return sum(self.classes_score[class_name])/len(self.classes_score[class_name])
         else:
-            logging.warning("Student {} {} not in class {}.".format(self.name,self.surname))
+            raise ValueError("Student {} {} not in class {}.".format(self.name,self.surname))
 
     def add_attendance(self,class_name):
         if class_name in self.classes_attendance:
             self.classes_attendance[class_name].append(1)
         else:
-            logging.warning("Student {} {} not in class {}.".format(self.name,self.surname))
+            raise ValueError("Student {} {} not in class {}.".format(self.name,self.surname))
 
     def get_attendance(self,class_name):
         if class_name in self.classes_attendance:
             if len(self.classes_attendance[class_name]) == 0:
-                logging.warning("Student {} {} has no attendance in class {}.".format(self.name,self.surname,class_name))
-                return 0
+                raise ValueError("Student {} {} has no attendance in class {}.".format(self.name,self.surname,class_name))
             return sum(self.classes_attendance[class_name])/len(self.classes_attendance[class_name])
         else:
-            logging.warning("Student {} {} not in class {}.".format(self.name,self.surname))
+            raise ValueError("Student {} {} not in class {}.".format(self.name,self.surname))
 
 class Subject:
     def __init__(self,title):
